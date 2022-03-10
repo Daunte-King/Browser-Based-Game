@@ -4,7 +4,7 @@ let MasterDeck = buildMasterDeck();
 let shuffledDeck = shuffleDeck();
 let playerDeck = makeplayerDeck();
 let cpuDeck = makecpuDeck();
-let playGame = playGame();
+let letsPlay = playGame();
 
 function buildMasterDeck() {
   const deck = [];
@@ -59,10 +59,21 @@ function makecpuDeck() {
 }
 
 function playGame() {
-    let warArr = [];
-    warArr.push(playerDeck.pop());
-    warArr.push(cpuDeck.pop());
-    if (warArr[0]>warArr[1])
+    let cpuTemp = [];
+    let playerTemp = [];
+    playerTemp.push(playerDeck.splice(-1, 1)[0]);
+    cpuTemp.push(cpuDeck.splice(-1, 1)[0]);
 
-    return warArr;
+    if (cpuTemp[cpuTemp.length -1].value < playerTemp[playerTemp.length -1].value){
+        playerDeck.push(...cpuTemp,...playerTemp);
+        console.log("Player Wins!");
+
+    }else if (cpuTemp[cpuTemp.length -1].value > playerTemp[playerTemp.length -1].value){
+        cpuDeck.push(...cpuTemp,...playerTemp);
+        console.log("Cpu Wins!");
+    }else {
+        console.log("WAR");
+        playGame();
+    }
+
 }
