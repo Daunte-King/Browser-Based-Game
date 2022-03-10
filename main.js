@@ -1,10 +1,10 @@
-console.log("Javascript connected");
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 let MasterDeck = buildMasterDeck();
 let shuffledDeck = shuffleDeck();
 let playerDeck = makeplayerDeck();
 let cpuDeck = makecpuDeck();
+let playGame = playGame();
 
 function buildMasterDeck() {
   const deck = [];
@@ -12,11 +12,25 @@ function buildMasterDeck() {
     ranks.forEach(function(rank) {
       deck.push({
        face: `${suit}${rank}`,
-       //score
+       value: getValue(rank)
       });
     });
   });
   return deck;
+}
+
+function getValue(rank) {
+    if (Number(rank)){
+        return Number(rank);
+    }else if(rank === "J"){
+        return 11;
+    }else if(rank === "Q"){
+        return 12;
+    }else if(rank === "K"){
+        return 13;
+    }else {
+        return 14;
+    }
 }
 
 function shuffleDeck() {
@@ -34,34 +48,21 @@ function shuffleDeck() {
 
 
 function makeplayerDeck() {
-    let playerDeck = [];
     const half = Math.ceil(shuffledDeck.length / 2);
-
-        playerDeck.push(shuffledDeck.slice(0, half));
-        return playerDeck;
+    return  shuffledDeck.slice(0, half);
 }
 
 
 function makecpuDeck() {
-    let cpuDeck = [];
     const half = Math.ceil(shuffledDeck.length / 2);
-
-        cpuDeck.push(shuffledDeck.slice(-half));
-        return cpuDeck;
+    return shuffledDeck.slice(-half);
 }
 
 function playGame() {
-    warArr = [];
-    warArr.push(playerDeck[playerDeck.length - 1]);
-    warArr.push(cpuDeck[cpuDeck.length - 1]);
-    console.log(warArr);
-    // if (warArr[0].rank > warArr[1].rank ){
-    //     playerDeck.push(warArr);
-    // }
-    // if (warArr[0].rank < warArr[1].rank) {
-    //     cpuDeck.push(warArr);
-    // }else {
+    let warArr = [];
+    warArr.push(playerDeck.pop());
+    warArr.push(cpuDeck.pop());
+    if (warArr[0]>warArr[1])
 
-    // }
+    return warArr;
 }
-console.log(playGame());
