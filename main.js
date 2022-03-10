@@ -5,14 +5,9 @@ let shuffledDeck = shuffleDeck();
 let playerDeck = makeplayerDeck();
 let cpuDeck = makecpuDeck();
 let letsPlay = playGame();
-let playerscardsLeft = playerDeck.length;
-let cpuscardsLeft= cpuDeck.length;
-let cpuWins = 0; playerWins = 0;
 
-document.getElementById("Pl-Card-Count").innerHTML = playerscardsLeft;
-document.getElementById("Player-Games-Won").innerHTML = playerWins;
-document.getElementById("Cpu-Card-Count").innerHTML = cpuscardsLeft;
-document.getElementById("Cpu-Games-Won").innerHTML = cpuWins;
+
+document.querySelector('button').addEventListener('click',endGame);
 
 
 
@@ -55,49 +50,53 @@ function shuffleDeck() {
     return tempDeck;
 }
 
-
-
-
 function makeplayerDeck() {
     const half = Math.ceil(shuffledDeck.length / 2);
     return  shuffledDeck.slice(0, half);
 }
-
 
 function makecpuDeck() {
     const half = Math.ceil(shuffledDeck.length / 2);
     return shuffledDeck.slice(-half);
 }
 
+function endGame(){
+    let cpuWins = 0; playerWins = 0;
+    if (playerDeck.length === 0 ){
+        cpuWins++;
+        document.getElementById("win/loss-message").innerHTML = "Cpu Wins the Game!";
+        document.getElementById("Cpu-Games-Won").innerHTML = cpuWins;
+    } else if (cpuDeck.length === 0){
+        playerWins++;
+        document.getElementById("win/loss-message").innerHTML = "Player Wins the Game!";
+        document.getElementById("Player-Games-Won").innerHTML = playerWins;
+    }else{
+    playGame();
+    }
+
+}
+
 function playGame() {
     let cpuTemp = [];
     let playerTemp = [];
+    let playerscardsLeft = playerDeck.length;
+    let cpuscardsLeft= cpuDeck.length;
+
     playerTemp.push(playerDeck.splice(-1, 1)[0]);
     cpuTemp.push(cpuDeck.splice(-1, 1)[0]);
 
     if (cpuTemp[cpuTemp.length -1].value < playerTemp[playerTemp.length -1].value){
         playerDeck.push(...cpuTemp,...playerTemp);
-        console.log("Player Wins!");
+        document.getElementById("win/loss-message").innerHTML = "Player Wins Round!";
 
     }else if (cpuTemp[cpuTemp.length -1].value > playerTemp[playerTemp.length -1].value){
         cpuDeck.push(...cpuTemp,...playerTemp);
-        console.log("Cpu Wins!");
+        document.getElementById("win/loss-message").innerHTML = "Cpu Wins Round!"
+
     }else {
-        console.log("WAR");
+        document.getElementById("win/loss-message").innerHTML = "It's a tie! WAR"
         playGame();
     }
-
-
-}
-
-function endGame(){
-    if (playerDeck.length === 0 ){
-        cpuWins++;
-        console.log("Cpu Wins!");
-    } else if (cpuDeck.length === 0){
-        playerWins++;
-        console.log("Player Wins!");
-    }else{
-    playGame();
-    }
+    document.getElementById("Pl-Card-Count").innerHTML = playerscardsLeft;
+    document.getElementById("Cpu-Card-Count").innerHTML = cpuscardsLeft;
 }

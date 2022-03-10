@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daunte's War Card Game</title>
     <script defer src="main.js"></script>
-    <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
+    <link href="cardstarter.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
@@ -18,15 +18,23 @@
              <h1>Player</h1>
             <p>Cards Left: <span id="Pl-Card-Count"></span></p>
             <p>Games Won: <span id="Player-Games-Won"></span></p>
+
          </section>
 
          <section class="Cpu">
              <h1>Cpu</h1>
              <p>Cards Left: <span id="Cpu-Card-Count"></span></p>
              <p>Games Won: <span id="Cpu-Games-Won"></span></p>
+
          </section>
+
+         <section class="Play-Game">
+
+         </section>
+
          <footer>
-             <input id="play" type="button" value="Play!" onclick="playGame();" />
+             <p><span id="win/loss-message"></span></p>
+             <button type="button" id="play">Play/Advance Game</button>
          </footer>
     </article>
 </body>
