@@ -7,9 +7,27 @@
     <title>Daunte's War Card Game</title>
     <script defer src="main.js"></script>
     <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    
+    <article class="wrapper">
 
+         <h1 class="title">WAR</h1>
+
+         <section class="Player">
+             <h1>Player</h1>
+            <p>Cards Left: <span id="Pl-Card-Count"></span></p>
+            <p>Games Won: <span id="Player-Games-Won"></span></p>
+         </section>
+
+         <section class="Cpu">
+             <h1>Cpu</h1>
+             <p>Cards Left: <span id="Cpu-Card-Count"></span></p>
+             <p>Games Won: <span id="Cpu-Games-Won"></span></p>
+         </section>
+         <footer>
+             <input id="play" type="button" value="Play!" onclick="playGame();" />
+         </footer>
+    </article>
 </body>
 </html>

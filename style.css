@@ -1,0 +1,30 @@
+h1.title {
+    color: black;
+    background-color: red;
+    text-align: center;
+    justify-content: center;
+}
+
+article.wrapper {
+    display: block;
+  margin: 10px auto;
+  text-align: center;
+  border: 5px solid black;
+  background-color: grey;
+  overflow: auto;
+}
+section.Player {
+    color:black;
+    display: inline-block;
+    float: left;
+    border: 3px solid black;
+    width: 49%;
+}
+
+section.Cpu {
+    color:black;
+    display: inline-block;
+    float: right;
+    border: 3px solid black;
+    width: 49%;
+}

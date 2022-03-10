@@ -5,6 +5,16 @@ let shuffledDeck = shuffleDeck();
 let playerDeck = makeplayerDeck();
 let cpuDeck = makecpuDeck();
 let letsPlay = playGame();
+let playerscardsLeft = playerDeck.length;
+let cpuscardsLeft= cpuDeck.length;
+let cpuWins = 0; playerWins = 0;
+
+document.getElementById("Pl-Card-Count").innerHTML = playerscardsLeft;
+document.getElementById("Player-Games-Won").innerHTML = playerWins;
+document.getElementById("Cpu-Card-Count").innerHTML = cpuscardsLeft;
+document.getElementById("Cpu-Games-Won").innerHTML = cpuWins;
+
+
 
 function buildMasterDeck() {
   const deck = [];
@@ -41,6 +51,7 @@ function shuffleDeck() {
         tempDeck[i] = tempDeck[j];
         tempDeck[j] = temp;
     }
+
     return tempDeck;
 }
 
@@ -76,4 +87,17 @@ function playGame() {
         playGame();
     }
 
+
+}
+
+function endGame(){
+    if (playerDeck.length === 0 ){
+        cpuWins++;
+        console.log("Cpu Wins!");
+    } else if (cpuDeck.length === 0){
+        playerWins++;
+        console.log("Player Wins!");
+    }else{
+    playGame();
+    }
 }
