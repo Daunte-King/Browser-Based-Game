@@ -79,7 +79,7 @@ function endGame(){
 
 function playGame() {
 
-    playerTemp.push(playerDeck.splice(1, 1)[0]);
+    playerTemp.push(playerDeck.splice(0, 1)[0]);
     cpuTemp.push(cpuDeck.splice(0, 1)[0]);
         render();
 
