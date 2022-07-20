@@ -7,6 +7,7 @@ const cpuDeck = makecpuDeck();
 let playerTemp = [];
 let cpuTemp = [];
 let cpuWins = 0; playerWins = 0;
+
 let playerscardEl = document.getElementById("players-card");
 let cpuscardEl = document.getElementById("cpu-card");
 
@@ -107,9 +108,7 @@ function playGame() {
 }
 
 function render() {
-    //   playerTemp[playerTemp.length - 1]
-    //    const playerCardEl = document.createElement("div")
-       // playerCardEl.className = `card ${playerTemp[playerTemp.length - 1].face}`
+
         playerscardEl.innerHTML = `<div class=" ${playerTemp[playerTemp.length - 1].face} card"></div>`;
         cpuscardEl.innerHTML = `<div class=" ${cpuTemp[cpuTemp.length - 1].face} card"></div>`;
 
